@@ -1,6 +1,6 @@
-# aula01
+# Flutter Study
 
-A new Flutter application.
+A simple code Flutter application to study and learn more about dart.
 
 ## Getting Started
 

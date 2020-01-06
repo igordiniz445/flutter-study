@@ -1,6 +1,6 @@
 # Flutter Study
 
-A simple code Flutter application to study and learn more about dart.
+A simple Flutter application code to study and learn more about dart.
 
 ## Getting Started
 

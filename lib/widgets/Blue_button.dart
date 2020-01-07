@@ -6,12 +6,15 @@ class BlueButton extends StatelessWidget {
   Function onPressed;
   Color color;
 
-  BlueButton(this.buttonText, this.onPressed, {this.color : Colors.blueAccent});
+  BlueButton(this.buttonText, this.onPressed, {this.color: Colors.blueAccent});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
       color: this.color,
       child: Text(
         buttonText,

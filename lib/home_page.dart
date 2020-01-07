@@ -4,6 +4,7 @@ import 'package:aula01/pages/hello_page3.dart';
 import 'package:aula01/utils/nav.dart';
 import 'package:aula01/widgets/Blue_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   BuildContext context;
@@ -76,7 +77,7 @@ class HomePage extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          BlueButton("Snack", () => _onClickSnack()),
+          BlueButton("Snack", _onClickSnack),
           BlueButton("Dialog", _onClickDialog),
           BlueButton("Toast", _onClickToast),
         ],
@@ -118,7 +119,32 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  _onClickDialog() {}
+  _onClickDialog() {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          //WillPopScop é para o android nao cancelar o Dialog quando clicar no botao voltar
+          return WillPopScope(
+            //Async function cancela o POP do botao voltar
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text("Alerta !"),
+              content: Text("Sua mensagem deu erro!"),
+              actions: <Widget>[
+                BlueButton("Cancelar", () {
+                  pop(context);
+                }),
+                BlueButton("OK", () {
+                  pop(context);
+                }),
+              ],
+            ),
+          );
+        });
+  }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(msg: "life sucks",gravity: ToastGravity.BOTTOM);
+  }
 }

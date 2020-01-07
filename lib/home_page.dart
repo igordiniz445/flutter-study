@@ -13,17 +13,31 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter App"),
-        centerTitle: true,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter App"),
+          centerTitle: true,
+          bottom: TabBar(tabs: <Widget>[
+            Text("Home", style: TextStyle(fontSize: 20),),
+            Text("Dogs", style: TextStyle(fontSize: 20),),
+            Text("Vazio", style: TextStyle(fontSize: 20),),
+          ],),
+        ),
+        body: TabBarView(children: <Widget>[
+          home(),
+          HelloPage1(),
+          Container(
+            color: Colors.green,
+          ),
+        ],),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add_circle_outline),
+          onPressed: ()=>print("botao flutuante clicado"),
+        ),
+        drawer: Drawer_list(),
       ),
-      body: home(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_circle_outline),
-        onPressed: ()=>print("botao flutuante clicado"),
-      ),
-      drawer: Drawer_list(),
     );
   }
 
@@ -54,11 +68,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _pageView() {
+  _pageView() {
     return Container(
       height: 300,
       margin: EdgeInsets.only(top: 10, bottom: 10),
-      child: PageView(
+      child: PageView(pageSnapping: true,
         children: <Widget>[
           _image("dog1.png"),
           _image("dog2.png"),
@@ -69,6 +83,9 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+
+
 
   _packButtons(context) {
     return Column(children: <Widget>[

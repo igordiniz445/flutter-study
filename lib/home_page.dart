@@ -25,7 +25,14 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          _text(),
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.black12,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: _text(),
+          ),
           _pageView(),
           _packButtons(context),
         ],
@@ -54,17 +61,17 @@ class HomePage extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          BlueButton( "ListView", () => changePage(context, HelloPage1())),
-          BlueButton( "Page 2", () => changePage(context, HelloPage2())),
-          BlueButton( "Page 3", () => changePage(context, HelloPage3())),
+          BlueButton("ListView", () => changePage(context, HelloPage1())),
+          BlueButton("Page 2", () => changePage(context, HelloPage2())),
+          BlueButton("Page 3", () => changePage(context, HelloPage3())),
         ],
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          BlueButton( "Snack", _onClickSnack),
-          BlueButton( "Dialog", _onClickDialog),
-          BlueButton( "Toast", _onClickToast),
+          BlueButton("Snack", _onClickSnack),
+          BlueButton("Dialog", _onClickDialog),
+          BlueButton("Toast", _onClickToast),
         ],
       )
     ]);
@@ -80,8 +87,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
 
   _image(String dog) {
     return Image.asset(
@@ -99,9 +104,7 @@ class HomePage extends StatelessWidget {
     print("Clicquei no snack");
   }
 
-  _onClickDialog() {
-  }
+  _onClickDialog() {}
 
-  _onClickToast() {
-  }
+  _onClickToast() {}
 }

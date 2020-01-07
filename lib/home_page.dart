@@ -1,6 +1,7 @@
 import 'package:aula01/pages/hello_page1.dart';
 import 'package:aula01/pages/hello_page2.dart';
 import 'package:aula01/pages/hello_page3.dart';
+import 'package:aula01/utils/drawer_list.dart';
 import 'package:aula01/utils/nav.dart';
 import 'package:aula01/widgets/Blue_button.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,11 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: home(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_circle_outline),
+        onPressed: ()=>print("botao flutuante clicado"),
+      ),
+      drawer: Drawer_list(),
     );
   }
 
@@ -29,7 +35,7 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
           padding: EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(10),
@@ -87,7 +93,7 @@ class HomePage extends StatelessWidget {
 
   _text() {
     return Text(
-      "This is my first app",
+      "This is a flutter APP",
       style: TextStyle(
         color: Colors.blueAccent,
         fontSize: 24,
@@ -145,6 +151,6 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickToast() {
-    Fluttertoast.showToast(msg: "life sucks",gravity: ToastGravity.BOTTOM);
+    Fluttertoast.showToast(msg: "Code With Flutter is EASY",gravity: ToastGravity.BOTTOM);
   }
 }

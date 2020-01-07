@@ -6,6 +6,8 @@ import 'package:aula01/widgets/Blue_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  BuildContext context;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -14,29 +16,34 @@ class HomePage extends StatelessWidget {
         title: Text("Flutter App"),
         centerTitle: true,
       ),
-      body: home(context),
+      body: home(),
     );
   }
 
-  home(context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.black12,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: _text(),
+  home() {
+    return Builder(
+      builder: (context) {
+        this.context = context;
+        return Container(
+          color: Colors.white,
+          padding: EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: _text(),
+              ),
+              _pageView(),
+              _packButtons(context),
+            ],
           ),
-          _pageView(),
-          _packButtons(context),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -69,7 +76,7 @@ class HomePage extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          BlueButton("Snack", _onClickSnack),
+          BlueButton("Snack", () => _onClickSnack()),
           BlueButton("Dialog", _onClickDialog),
           BlueButton("Toast", _onClickToast),
         ],
@@ -101,7 +108,14 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickSnack() {
-    print("Clicquei no snack");
+    Scaffold.of(this.context).showSnackBar(SnackBar(
+      content: Text("THIS IS JUST A SNACK"),
+      action: SnackBarAction(
+        label: "ok",
+        onPressed: () => print("Snack OK"),
+        textColor: Colors.green,
+      ),
+    ));
   }
 
   _onClickDialog() {}

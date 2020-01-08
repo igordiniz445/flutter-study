@@ -4,6 +4,8 @@ import 'package:aula01/widgets/Blue_button.dart';
 import 'package:aula01/widgets/Flat_button.dart';
 import 'package:flutter/material.dart';
 
+
+
 class Login extends StatelessWidget {
   final _userText = TextEditingController();
   final _passwordText = TextEditingController();
@@ -35,53 +37,11 @@ class Login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      FlutterLogo(
-                        size: 100,
-                      ),
-                      Text(
-                        "Flutter App",
-                        style:
-                            TextStyle(fontSize: 34, color: Colors.blueAccent),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 30, right: 30),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Username",
-                      ),
-                      controller: _userText,
-                      validator: (_userText) {
-                        if (_userText.isEmpty) return "Digite Seu usuário";
-                        return null;
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 30, right: 30),
-                    child: TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                      ),
-                      controller: _passwordText,
-                      validator: (_passwordText) {
-                        if (_passwordText.isEmpty) return "Digite sua senha";
-                        return null;
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 35),
-                    child: BlueButton("Login", () => _logUser()),
-                  ),
-                  Container(
-                    //margin: EdgeInsets.only(top: 5),
-                    child: FlatSimpleButton("Create account", () => _signUp()),
-                  )
+                  _header(),
+                  _loginForm(),
+                  _passwordForm(),
+                  _loginButton(),
+                  _signUpButton(),
                 ],
               ),
             ),
@@ -108,5 +68,67 @@ class Login extends StatelessWidget {
 
   _signUp() {
     push(_context, SignUp());
+  }
+
+  _header() {
+    return Column(
+      children: <Widget>[
+        FlutterLogo(
+          size: 100,
+        ),
+        Text(
+          "Flutter App",
+          style:
+          TextStyle(fontSize: 34, color: Colors.blueAccent),
+        ),
+      ],
+    );
+  }
+
+  _loginForm() {
+    return Container(
+      margin: EdgeInsets.only(left: 30, right: 30),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: "Username",
+        ),
+        controller: _userText,
+        validator: (_userText) {
+          if (_userText.isEmpty) return "Digite Seu usuário";
+          return null;
+        },
+      ),
+    );
+  }
+
+  _passwordForm() {
+    return Container(
+      margin: EdgeInsets.only(left: 30, right: 30),
+      child: TextFormField(
+        obscureText: true,
+        decoration: InputDecoration(
+          labelText: "Password",
+        ),
+        controller: _passwordText,
+        validator: (_passwordText) {
+          if (_passwordText.isEmpty) return "Digite sua senha";
+          return null;
+        },
+      ),
+    );
+  }
+
+  _loginButton() {
+    return Container(
+      margin: EdgeInsets.only(top: 35),
+      child: BlueButton("Login", () => _logUser()),
+    );
+  }
+
+  _signUpButton() {
+    return Container(
+      //margin: EdgeInsets.only(top: 5),
+      child: FlatSimpleButton("Create account", () => _signUp()),
+    );
   }
 }

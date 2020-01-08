@@ -11,19 +11,22 @@ class BlueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return RaisedButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      color: this.color,
-      child: Text(
-        buttonText,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
+    return ButtonTheme(
+      minWidth: 120,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
+        color: this.color,
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
+        onPressed: onPressed,
       ),
-      onPressed: onPressed,
     );
   }
 }

@@ -25,7 +25,9 @@ class DogDescription extends StatelessWidget {
             this._nome,
             style: TextStyle(fontSize: 30, color: Colors.blue),
           ),
-          Image.asset(_path),
+          Hero(
+            tag: this._nome,
+              child: Image.asset(_path)),
         ],
       ),
     );

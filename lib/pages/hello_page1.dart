@@ -12,6 +12,13 @@ class HelloPage1 extends StatefulWidget {
 class _HelloPage1State extends State<HelloPage1> {
   BuildContext context;
   bool gridView = false;
+  List<Dog> dogs = [
+    Dog("Dog X", "assets/images/dog1.png"),
+    Dog("Dog y", "assets/images/dog2.png"),
+    Dog("Dog z", "assets/images/dog3.png"),
+    Dog("Dog alfa", "assets/images/dog4.png"),
+    Dog("Dog beta", "assets/images/dog5.png"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +59,7 @@ class _HelloPage1State extends State<HelloPage1> {
     }
   }
   _body() {
-    List<Dog> dogs = [
-      Dog("Dog X", "assets/images/dog1.png"),
-      Dog("Dog y", "assets/images/dog2.png"),
-      Dog("Dog z", "assets/images/dog3.png"),
-      Dog("Dog alfa", "assets/images/dog4.png"),
-      Dog("Dog beta", "assets/images/dog5.png"),
-    ];
+
 
     if (gridView) {
       return Center(
@@ -92,7 +93,7 @@ class _HelloPage1State extends State<HelloPage1> {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          _image(dog.path),
+          _image(dog.path, dog.name),
           Align(
             alignment: Alignment(1, 1),
             child: Container(
@@ -116,10 +117,13 @@ class _HelloPage1State extends State<HelloPage1> {
     );
   }
 
-  _image(String dog) {
-    return Image.asset(
-      dog,
-      fit: BoxFit.cover,
+  _image(String dog, String name) {
+    return Hero(
+      tag: name,
+      child: Image.asset(
+        dog,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

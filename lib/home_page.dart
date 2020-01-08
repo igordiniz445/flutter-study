@@ -1,3 +1,4 @@
+import 'package:aula01/pages/Login.dart';
 import 'package:aula01/pages/hello_page1.dart';
 import 'package:aula01/pages/hello_page2.dart';
 import 'package:aula01/pages/hello_page3.dart';
@@ -20,20 +21,33 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Flutter App"),
           centerTitle: true,
-          bottom: TabBar(tabs: <Widget>[
-            Text("Home", style: TextStyle(fontSize: 20),),
-            Text("Dogs", style: TextStyle(fontSize: 20),),
-            Text("Vazio", style: TextStyle(fontSize: 20),),
-          ],),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Text(
+                "Home",
+                style: TextStyle(fontSize: 20),
+              ),
+              Text(
+                "Dogs",
+                style: TextStyle(fontSize: 20),
+              ),
+              Text(
+                "Vazio",
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
         ),
-        body: TabBarView(children: <Widget>[
-          home(),
-          HelloPage1(),
-          Container(color: Colors.green),
-        ],),
+        body: TabBarView(
+          children: <Widget>[
+            home(),
+            HelloPage1(),
+            Container(color: Colors.green),
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_circle_outline),
-          onPressed: ()=>print("botao flutuante clicado"),
+          onPressed: () => print("botao flutuante clicado"),
         ),
         drawer: Drawer_list(),
       ),
@@ -71,7 +85,8 @@ class HomePage extends StatelessWidget {
     return Container(
       height: 300,
       margin: EdgeInsets.only(top: 10, bottom: 10),
-      child: PageView(pageSnapping: true,
+      child: PageView(
+        pageSnapping: true,
         children: <Widget>[
           _image("dog1.png"),
           _image("dog2.png"),
@@ -83,9 +98,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
-
-
   _packButtons(context) {
     return Column(children: <Widget>[
       Row(
@@ -93,7 +105,7 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           BlueButton("ListView", () => changePage(context, HelloPage1())),
           BlueButton("Page 2", () => changePage(context, GoogleMapWidget())),
-          BlueButton("Page 3", () => changePage(context, HelloPage3())),
+          BlueButton("Page 3", () => changePage(context, Login())),
         ],
       ),
       Row(
@@ -131,14 +143,16 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickSnack() {
-    Scaffold.of(this.context).showSnackBar(SnackBar(
-      content: Text("THIS IS JUST A SNACK"),
-      action: SnackBarAction(
-        label: "ok",
-        onPressed: () => print("Snack OK"),
-        textColor: Colors.green,
+    Scaffold.of(this.context).showSnackBar(
+      SnackBar(
+        content: Text("THIS IS JUST A SNACK"),
+        action: SnackBarAction(
+          label: "ok",
+          onPressed: () => print("Snack OK"),
+          textColor: Colors.green,
+        ),
       ),
-    ));
+    );
   }
 
   _onClickDialog() {
@@ -167,6 +181,7 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickToast() {
-    Fluttertoast.showToast(msg: "Code With Flutter is EASY",gravity: ToastGravity.BOTTOM);
+    Fluttertoast.showToast(
+        msg: "Code With Flutter is EASY", gravity: ToastGravity.BOTTOM);
   }
 }

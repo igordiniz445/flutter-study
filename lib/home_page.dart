@@ -4,6 +4,7 @@ import 'package:aula01/pages/hello_page3.dart';
 import 'package:aula01/utils/drawer_list.dart';
 import 'package:aula01/utils/nav.dart';
 import 'package:aula01/widgets/Blue_button.dart';
+import 'package:aula01/widgets/GoogleMapWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -28,9 +29,7 @@ class HomePage extends StatelessWidget {
         body: TabBarView(children: <Widget>[
           home(),
           HelloPage1(),
-          Container(
-            color: Colors.green,
-          ),
+          Container(color: Colors.green),
         ],),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_circle_outline),
@@ -93,7 +92,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           BlueButton("ListView", () => changePage(context, HelloPage1())),
-          BlueButton("Page 2", () => changePage(context, HelloPage2())),
+          BlueButton("Page 2", () => changePage(context, GoogleMapWidget())),
           BlueButton("Page 3", () => changePage(context, HelloPage3())),
         ],
       ),
